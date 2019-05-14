@@ -1,0 +1,32 @@
+# 1.
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for i in nums:
+            a = target - i
+            start_index = nums.index(i)
+            next_index = start_index + 1
+            temp_nums = nums[next_index: ]
+            if a in temp_nums:
+                return(nums.index(i), next_index + temp_nums.index(a))
+                
+# 2.
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        dict = {}
+        for i in range(len(nums)):
+            if target - nums[i] not in dict:
+                dict[nums[i]] = i
+            else:
+                return [dict[target-nums[i]], i]
+                
+               
