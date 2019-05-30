@@ -1,0 +1,15 @@
+#1.
+class Solution(object):
+    def convertToTitle(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        result, num = "", n
+        
+        while num:
+            result += chr((num - 1)%26 + ord('A'))
+            num = (num - 1) // 26
+            print(num)
+        return result[::-1]
+#2.
