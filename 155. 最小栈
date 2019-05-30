@@ -1,0 +1,108 @@
+#1.
+class MinStack(object):
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.l = []
+
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: None
+        """
+        if x is None:
+            pass
+        else:
+            self.l.append(x)
+
+    def pop(self):
+        """
+        :rtype: None
+        """
+        if self.l is None:
+            return 'error'
+        else:
+            self.l.pop(-1)
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        if self.l is None:
+            return 'error'
+        else:
+            return self.l[-1]
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        if self.l is None:
+            return 'error'
+        else:
+            return min(self.l)
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
+#2.
+class MinStack(object):
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stack = []
+        self.min = None
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: None
+        """
+        self.stack.append(x)
+        if self.min == None or self.min > x:
+            self.min = x
+
+    def pop(self):
+        """
+        :rtype: None
+        """
+        popItem = self.stack.pop() 
+        if len(self.stack) == 0: 
+            self.min = None 
+            return popItem 
+        if popItem == self.min: 
+            self.min = self.stack[0] 
+            for i in self.stack: 
+                if i < self.min: 
+                    self.min = i 
+        return popItem
+
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        return self.stack[-1]
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        return self.min
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
