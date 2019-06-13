@@ -11,7 +11,7 @@ class Solution:
         pointer = root
         
         while pointer:
-            print(pointer.val)
+            #print(pointer.val)
             if p.val > pointer.val and q.val > pointer.val:
                 pointer = pointer.right
             elif p.val < pointer.val and q.val < pointer.val:
