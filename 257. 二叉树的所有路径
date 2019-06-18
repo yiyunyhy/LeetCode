@@ -1,0 +1,61 @@
+#1.
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+        ret = []
+        if not root:
+            return []
+        
+        if self.isLeafNode(root):
+            return [str(root.val)]
+        else:
+            if root.left:
+                if self.isLeafNode(root.left):
+                    ret.append(str(root.val)+'->'+str(root.left.val))
+                else:
+                    for i in self.binaryTreePaths(root.left):
+                        ret.append(str(root.val) + '->' + i)
+            if root.right:
+                if self.isLeafNode(root.right):
+                    ret.append(str(root.val) + '->' + str(root.right.val))
+                else:
+                    for i in self.binaryTreePaths(root.right):
+                               ret.append(str(root.val) + '->' + i)
+            return ret
+        
+    def isLeafNode(self, root:TreeNode) -> int:
+        return not root.left and not root.right
+#2.
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+        res = []
+        if root is None:
+            return res
+        
+        path = []
+        self.__helper(root, path, res)
+        return res
+    def __helper(self, node, path, res):
+        if node is None:
+            return 
+        path.append(str(node.val))
+        if node.left is None and node.right is None:
+            res.append("->".join(path))
+        if node.left:
+            self.__helper(node.left,path, res)
+        if node.right:
+            self.__helper(node.right,path,res)
+        path.pop()
