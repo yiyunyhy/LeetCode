@@ -1,0 +1,25 @@
+#1.
+# The isBadVersion API is already defined for you.
+# @param version, an integer
+# @return a bool
+# def isBadVersion(version):
+
+class Solution:
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        return self.find(1, n)
+    
+    def find(self, l, r):
+        if isBadVersion(l):
+            return l
+        while r - l > 1:
+            p = (l + r) / 2
+            if isBadVersion(p):
+                r = p
+            else:
+                l = p
+        return int(r)
+#2.
