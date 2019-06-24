@@ -1,0 +1,11 @@
+#1.
+class Solution:
+    def findOcurrences(self, text: str, first: str, second: str) -> List[str]:
+        texts = text.split(' ')
+        result = []
+        for i in range(len(texts) - 2):
+            if texts[i] == first:
+                if texts[i+1] == second:
+                    result.append(texts[i+2])
+        return result
+#2.
