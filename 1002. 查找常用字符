@@ -1,0 +1,16 @@
+#1.
+class Solution:
+    def commonChars(self, A: List[str]) -> List[str]:
+        result = []
+        if not A or len(A) < 2:
+            return result
+        
+        setkey = set(A[0])
+        
+        for i in setkey:
+            num = min(a.count(i) for a in A)
+            for j in range(num):
+                result.append(i)
+        return result
+                
+#2.
