@@ -1,0 +1,47 @@
+#1.
+class Solution(object):
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        a = set()
+        
+        while n != 1:
+            num  = 0
+            while n > 0:
+                tmp = n % 10
+                num += tmp**2
+                n //= 10
+                
+            if num in a:
+                return False
+            else:
+                a.add(num)
+            n = num
+        return True
+        
+#2.
+class Solution(object):
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        if n == 0:
+            return False
+        
+        list1 = []
+        while n != 1:
+            n_1 = str(n)
+            l = len(n_1)
+            count = 0
+            for i in range(l):
+                count += int(n_1[i])**2
+            if count in list1:
+                return False
+            else:
+                list1.append(count)
+            n = count
+        return True
+#3.
