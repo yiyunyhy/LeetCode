@@ -1,0 +1,27 @@
+#1.
+class Solution(object):
+    def isRobotBounded(self, instructions):
+        """
+        :type instructions: str
+        :rtype: bool
+        """
+        direct = 0 #方向，0上1右2下3左
+        x = 0
+        y = 0
+        for i in instructions:
+            if i == 'L':
+                direct -= 1
+            elif i == 'R':
+                direct += 1
+            else:
+                direct %= 4
+                if direct == 0:
+                    y += 1 
+                elif direct == 1:
+                    x += 1
+                elif direct == 2:
+                    y -= 1
+                else:
+                    x -= 1
+        return direct % 4 != 0 or (x == 0 and y== 0)
+#2.
