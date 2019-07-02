@@ -1,0 +1,23 @@
+#1.
+class Solution(object):
+    def gardenNoAdj(self, N, paths):
+        """
+        :type N: int
+        :type paths: List[List[int]]
+        :rtype: List[int]
+        """
+        ans = [0] * N
+        graph = [set() for _ in range(N)]
+        for path in paths:
+            x = path[0] - 1
+            y = path[1] - 1
+            graph[x].add(y)
+            graph[y].add(x)
+        for i in range(N):
+            candidates = set([1,2,3,4])
+            for child in graph[i]:
+                if child < i:
+                    candidates.discard(ans[child])
+            ans[i] = list(candidates)[0]
+        return ans
+#2.
