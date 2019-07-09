@@ -1,0 +1,26 @@
+#1.
+class Solution:
+    def arrangeCoins(self, n: int) -> int:
+        i = 1
+        while n >= i:
+            n -= i
+            i += 1
+        return i - 1
+#2.
+class Solution:
+    def arrangeCoins(self, n: int) -> int:
+        k = int(((8*n+1)**0.5-1)/2)
+        return k
+#3.
+class Solution:
+    def arrangeCoins(self, n: int) -> int:
+        l = 0
+        r = n
+        while l <= r:
+            mid = (l + r) // 2
+            if 0 <= n - (mid+1)*mid/2 < mid + 1:
+                return mid
+            elif n - (mid+1)*mid/2 >= mid + 1:
+                l = mid + 1
+            elif n - (mid+1)*mid/2 < 0:
+                r = mid - 1
