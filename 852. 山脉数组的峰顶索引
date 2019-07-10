@@ -1,0 +1,26 @@
+#1.
+class Solution:
+    def peakIndexInMountainArray(self, A: List[int]) -> int:
+        head = 0
+        last = len(A) - 1
+        while head != last:
+            if A[head] > A[last]:
+                last -= 1
+            else:
+                head += 1
+        return head
+#2.
+class Solution:
+    def peakIndexInMountainArray(self, A: List[int]) -> int:
+        head = 0
+        last = len(A)
+        
+        while head < last:
+            mid = (head + last) // 2
+            if A[mid] > A[mid - 1] and A[mid] > A[mid + 1]:
+                return mid
+                break
+            elif A[mid] > A[mid - 1]:
+                head = mid
+            else:
+                last = mid
