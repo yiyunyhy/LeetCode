@@ -1,0 +1,22 @@
+#1.
+class Solution:
+    def sortArrayByParity(self, A: List[int]) -> List[int]:
+        l1=[]
+        l2=[]
+        for i in A:
+            if i % 2 == 0:
+                l1.append(i)
+            else:
+                l2.append(i)
+        return l1+l2
+#2.
+class Solution:
+    def sortArrayByParity(self, A: List[int]) -> List[int]:
+        l1=[]
+        l2=[]
+        for i in A:
+            if i % 2 == 0:
+                l1.append(i)
+            else:
+                l2.append(i)
+        return l1+l2
