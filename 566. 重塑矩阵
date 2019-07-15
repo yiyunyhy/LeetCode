@@ -17,3 +17,17 @@ class Solution:
         return ans
         
 #2.
+class Solution:
+    def matrixReshape(self, nums: List[List[int]], r: int, c: int) -> List[List[int]]:
+        a = []
+        b = []
+        for num in nums:
+            for i in num:
+                a.append(i)
+        if len(a) != r * c:
+            return nums
+        else:
+            for i in range(r):
+                b.append(a[i*c: (i+1)*c])
+            return b
+        
