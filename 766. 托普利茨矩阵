@@ -1,0 +1,46 @@
+#1.
+class Solution:
+    def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
+        if len(matrix) == 1 or len(matrix[0]) == 1:
+            return True
+        
+        r = len(matrix)
+        c = len(matrix[0])
+        
+        rA, cA = 0, c - 1
+        rB, cB = 0, c - 1
+        for _ in range(r + c):
+            if cA > 0:
+                cA -= 1
+            else:
+                rA += 1
+            if rB < r - 1:
+                rB += 1
+            else:
+                cB -= 1
+            currow, curcol = rA, cA
+            while currow< rB and curcol < cB:
+                currow, curcol = currow + 1, curcol + 1
+                if matrix[currow][curcol] != matrix[currow - 1][curcol - 1]:
+                    return False
+        return True
+        
+#2.
+class Solution:
+    def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
+        temp = []
+        for i in range(len(matrix) - 1):
+            for j in range(len(matrix[0]) - 1):
+                temp.append([[matrix[i][j], matrix[i][j+1]],[matrix[i+1][j], matrix[i+1][j+1]]])
+        for i in temp:
+            if i[0][0] != i[1][1]:
+                return False
+        return True
+        
+#3.
+class Solution:
+    def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
+        for i in range(1, len(matrix)):
+            if matrix[i][1:] != matrix[i-1][:-1]:
+                return False
+        return True
