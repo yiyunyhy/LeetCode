@@ -1,0 +1,9 @@
+#1.
+class Solution:
+    def fairCandySwap(self, A: List[int], B: List[int]) -> List[int]:
+        sa, sb = sum(A), sum(B)
+        setB = set(B)
+        for i in A:
+            if i + (sb - sa) / 2 in setB:
+                return [i, i + (sb - sa) / 2]
+#2.
