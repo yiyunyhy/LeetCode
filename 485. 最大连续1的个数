@@ -1,0 +1,39 @@
+#1.
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        r = 0
+        c = 0
+        for i in nums:
+            if i:
+                 c += 1
+            else:
+                r = max(r, c)
+                c = 0
+        return max(r,c)
+#2.
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        n = len(nums)
+        max1 = 0
+        start = -1
+        for i in range(n):
+            if nums[i] == 1:
+                max1 = max(max1, i-start)
+            else:
+                start = i
+        return max1
+#3.
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        count = 0
+        s = 0
+        for i in nums:
+            if i == 1:
+                count += 1
+            else:
+                s = max(s, count)
+                count = 0
+        s = max(s, count)
+        return s
