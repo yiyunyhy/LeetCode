@@ -1,0 +1,22 @@
+#1.
+class Solution:
+    def imageSmoother(self, M: List[List[int]]) -> List[List[int]]:
+        m = len(M)
+        n = len(M[0])
+        
+        res = [[0 for _ in range(0,n)] for _ in range(0,m)]
+        
+        for i in range(m):
+            for j in range(n):
+                temp = 0
+                count = 0
+                for r in range(-1,2):
+                    for c in range(-1, 2):
+                        row = i+r
+                        col = j+c
+                        if row>=0 and row<m and col>=0 and col<n:
+                            count += 1
+                            temp += M[row][col]
+                res[i][j] = temp // count
+        return res
+#2.
